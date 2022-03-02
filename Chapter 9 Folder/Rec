@@ -1,0 +1,31 @@
+// Name: JT/Jonathan Neville	Date: Feb 17, 2022
+class Rec {
+	public static void main(String[] args) {
+		Rectangle rectangle1 = new Rectangle(4, 40);
+		System.out.print("Rectangle1:\nWidth: "+ rectangle1.width +"\nHeight: "+ rectangle1.height +"\nArea: "+ rectangle1.getArea() +"\nPerimeter: "+ rectangle1.getPerimeter()+ "\n");
+		
+		Rectangle rectangle2 = new Rectangle(3.5, 35.9);
+		System.out.print("\nRectangle2:\nWidth: "+ rectangle2.width +"\nHeight: "+ rectangle2.height +"\nArea: "+ rectangle2.getArea() +"\nPerimeter: "+ rectangle2.getPerimeter());
+	}
+}
+
+class Rectangle {
+	double width;
+	double height;
+	
+	Rectangle() {
+	}
+	
+	Rectangle(double newWidth, double newHeight){
+		width = newWidth;
+		height = newHeight;
+	}
+	
+	double getArea(){
+		return width * height;
+	}
+	
+	double getPerimeter(){
+		return (2 * width) + (2 * height);
+	}
+}
