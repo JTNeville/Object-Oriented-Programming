@@ -1,0 +1,60 @@
+// Name: JT / Jonathan Neville Date: Feb 28, 2022
+import java.sql.*;
+import java.util.Date;
+
+class NineDashOne {
+	public static void main(String[] args) {
+		Account account1 = new Account(1122, 20000, 4.5, 2500, 3000);
+		System.out.print("Balance: " + account1.deposit() + "\nMonthly Interest: " + account1.getMonthlyInterest() + "\nDate Created:" + account1.dateCreated());
+	}
+}
+
+class Account {
+	private int id = 0;
+	private double balance = 0;
+	private double annualInterestRate = 0;
+	private double withdraw = 0;
+	private double deposit = 0;
+	private Date dateCreated = new java.util.Date();
+	
+	//Constuctors & Accessors
+	
+	Account() {
+	}
+	
+	Account(int newId, double newBalance, double newAnnualInterestRate, double newWithdraw, double newDeposit) {
+		id = newId;
+		balance = newBalance;
+		annualInterestRate = newAnnualInterestRate;
+		withdraw = newWithdraw;
+		deposit = newDeposit;
+	}
+	
+	public Date dateCreated(){
+		return dateCreated;
+	}	
+	//Methods
+	double monthlyInterestRate;
+	
+	double getMonthlyInterestRate() {
+		monthlyInterestRate = (annualInterestRate / 100) / 12;
+		return monthlyInterestRate;
+	}
+	
+	double getMonthlyInterest() {
+		getMonthlyInterestRate();
+		double monthlyInterest = balance * monthlyInterestRate;
+		return monthlyInterest;
+	}
+	
+	double withdraw() {
+		balance = balance - withdraw;
+		return balance;
+	}
+	
+	double deposit() {
+		withdraw();
+		balance = balance + deposit;
+		return balance;
+	}
+}
