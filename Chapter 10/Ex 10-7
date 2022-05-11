@@ -1,0 +1,127 @@
+// Name: JT / Jonathan Neville Date: May 11, 2022
+
+import java.sql.*;
+import java.util.Scanner;
+
+class Exercise10_7 {
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		
+		//Accounts:
+		
+		Account[] accountArray = new Account[10];
+		accountArray[0] = new Account(100, 0);
+		accountArray[1] = new Account(100, 1);
+		accountArray[2] = new Account(100, 2);
+		accountArray[3] = new Account(100, 3);
+		accountArray[4] = new Account(100, 4);
+		accountArray[5] = new Account(100, 5);
+		accountArray[6] = new Account(100, 6);
+		accountArray[7] = new Account(100, 7);
+		accountArray[8] = new Account(100, 8);
+		accountArray[9] = new Account(100, 9); 
+		
+		//--------------------------------------
+		
+		System.out.print("Please enter your Id here: ");
+		int id = input.nextInt();
+		
+		System.out.print("\n");
+		
+		for(int a = 1; 0 < a; a++){		//TIS IS DA BIG LOOP!!!
+			
+			double withdraw;
+			double deposit;
+			
+			
+			if(id >= 10){
+				System.out.print("Please try again");
+			}
+			
+			else if(id < 10){
+				System.out.print("Main Menu: \n1: Check Balance \n2: Withdraw \n3: Deposit \n4: Exit\nYour Option: "); // This is menu
+			}
+			
+			//-------------------------------------------------
+			
+			int answer = input.nextInt();
+			
+			if(answer == 1){
+				System.out.print("Your Balance is: " + accountArray[id].getBalance() + "\n");
+			}
+			
+			if(answer == 2){
+				System.out.print("How much would you like to withdraw: ");
+				double money = input.nextDouble();
+				
+				double withdrawn = accountArray[id].withdraw(money);
+				accountArray[id].setBalance(withdrawn);
+			}
+			
+			if(answer == 3){
+				System.out.print("How much would you like to deposit: ");
+				double money = input.nextDouble();
+				
+				double deposited = accountArray[id].deposit(money);
+				accountArray[id].setBalance(deposited);
+			}
+			
+			if(answer == 4){
+				break;
+			}
+			
+			else if(answer >= 5 || answer <= 0){
+				System.out.print("That is not one of the options, please try again!\n");
+			}
+		}
+				
+	}
+}
+
+class Account {
+	int id;
+	double balance;
+	double withdraw;
+	double deposit;
+	
+	//Constructors & Accessors
+	
+	Account() {
+	}
+	
+	Account(double newBalance, int newId) {
+		balance = newBalance;
+		id = newId;
+	}
+	
+	//Methods
+	
+	double withdraw(double amount) {
+		this.balance = this.balance - amount;
+		setBalance(this.balance);
+		return this.balance;
+	}
+	
+	double deposit(double amount) {
+		balance = balance + amount;
+		return balance;
+	}
+	
+	int getId(){
+		return id;
+	}
+	
+	int setId(int id){
+		id = id;
+		return id;
+	}
+	
+	double setBalance(double amount){
+		this.balance = amount;
+		return this.balance;
+	}
+	
+	double getBalance(){
+		return this.balance;
+	}
+}
