@@ -1,0 +1,142 @@
+class Exercise10_3 {
+	public static void main(String[] args) {
+		MyInteger myInteger1 = new MyInteger(20);
+		int value = 7;
+		char[] jtarray = {'1', '2', '3', '4', '5'};
+		String str = "1234567890";
+		System.out.print("isEven(), isOdd(), and isPrime(): " + myInteger1.isEven() + ", " + myInteger1.isOdd() + ", " + myInteger1.isPrime() + "\nisEven(int value), isOdd(int value), and isPrime(int value): " + myInteger1.isEven(value) + ", " + myInteger1.isOdd(value) + ", " + myInteger1.isPrime(value) + "\nisEven(), isOdd(), and isPrime(): " + myInteger1.isEven(myInteger1) + ", " + myInteger1.isOdd(myInteger1) + ", " + myInteger1.isPrime(myInteger1) + "\nChar array to int num: " + myInteger1.parseInt(jtarray) + "\nString to int: " + myInteger1.parseInt(str));
+	}
+}
+
+class MyInteger {
+	int value;
+	
+	public MyInteger(int newValue){
+		this.value = newValue;
+	}
+	
+	public int getter(){
+		return value;
+	}
+	
+	public boolean isEven(){
+		if(value % 2 == 0){
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public boolean isOdd(){
+		if(!(value % 2 == 0)){
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public boolean isPrime(){
+			boolean yn = true;
+
+			for (int i = 2; i <= value / 2; ++i) {
+				if (value % i == 0) {
+					yn = false;
+					break;
+				}
+			}
+		
+		return yn;
+	}
+	
+	//Next-----------------------------------------------
+	
+	public static boolean isEven(int value){
+		if(value % 2 == 0){
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public static boolean isOdd(int value){
+		if(!(value % 2 == 0)){
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public static boolean isPrime(int value){
+			boolean yn = true;
+		
+			for (int i = 2; i <= value / 2; ++i) {
+				if (value % i == 0) {
+					yn = false;
+					break;
+				}
+			}
+		
+		return yn;
+	}
+	
+	//Next-----------------------------------------------
+	
+	public static boolean isEven(MyInteger myInteger){
+		int test = myInteger.value;
+		return isEven(test);
+	}
+	
+	public static boolean isOdd(MyInteger myInteger){
+		int test = myInteger.value;
+		return isOdd(test);
+	}
+	
+	public static boolean isPrime(MyInteger myInteger){
+		int test = myInteger.value;
+		return isPrime(test);
+	}
+	
+	//Next-----------------------------------------------
+	
+	public boolean equal(int value){
+		if(value == 20){
+			return true;
+		}
+		
+		else{
+			return false;
+		}
+	}
+	
+	public boolean equal(MyInteger myInteger){
+		int test = myInteger.value;
+		return equal(test);
+	}
+	
+	//Next-----------------------------------------------
+
+	public static String parseInt(char[] arr){
+		String[] arr2 = new String[5];
+		int[] arr3 = new int[5];
+		
+		for(int a = 0; a < 5; a++){
+			arr2[a] = String.valueOf(arr[a]);
+			arr3[a] = Integer.parseInt(arr2[a]);
+		}
+		
+		String save = (arr3[0] + " " + arr3[1] + " " + arr3[2] + " " + arr3[3] + " " + arr3[4]);
+		
+		return save;
+	}
+	
+	//Next-----------------------------------------------
+	
+	public static int parseInt(String str){
+		int save = Integer.parseInt(str);
+		return save;
+	}
+}
